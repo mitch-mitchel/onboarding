@@ -9,7 +9,7 @@ Every step below has a **pass condition**, so you always know whether you're act
 | [0](#0-fire-all-access-requests)      | Fire all access requests   | One batched message sent — then keep going while you wait                        |
 | [1](#1-confirm-your-accounts)         | Accounts confirmed         | GitHub org (2FA on), Slack, Google Workspace, password manager                   |
 | [2](#2-set-up-git)                    | Git setup                  | `ssh -T` greets your FLP user; git identity in your FLP directory is `@free.law` |
-| [3](#3-install-your-toolchain)        | Toolchain                  | Python, Node, and Docker resolve from your shell                                 |
+| [3](#3-install-your-toolchain)        | Toolchain                  | Python, Node, and Docker all answer from your shell                              |
 | [4](#4-wire-up-your-editor)           | Editor                     | Saving a `.py` file reformats it with ruff                                       |
 | [5](#5-set-up-claude-code)            | Claude Code                | `claude` starts authenticated; `/help` lists your FLP skills                     |
 | [6](#6-clone-your-repo-and-bootstrap) | Clone your repo, bootstrap | The test suite passes locally                                                    |
@@ -41,6 +41,8 @@ As each invite lands, sign in and finish setup:
 
 **Done when:** you can sign in to all four, and your GitHub account shows as a member of the FLP org with 2FA on.
 
+The other two requests from step 0 land later: your Claude Code seat gets used in step 5, and project credentials in step 6, when the repo's own setup docs tell you which ones it needs.
+
 ## 2. Set up git
 
 Work through [Git Setup](git-setup.md) — SSH keys, global config, and hooks. If you use GitHub for personal projects too, the host-alias section keeps the two accounts from stepping on each other.
@@ -55,19 +57,21 @@ That last check is worth doing deliberately. A hook that never fires looks ident
 
 ## 3. Install your toolchain
 
-Three things need to resolve from your shell. Use whichever manager you like — the goal is that versions come from each repo's pin files, so you never hand-pick a version per project.
+Three tools need to be installed and callable from your shell. Use whichever manager you like — the goal is that versions come from each repo's pin files, so you never hand-pick a version per project.
 
-- **Python** at the version your repo pins. Look for `.python-version` or `requires-python` in `pyproject.toml`. Repos with a `uv.lock` install fastest with [uv](https://docs.astral.sh/uv/); `pyenv` and `mise` read the same pin files.
+- **Python** through a version manager that reads pin files. Repos declare theirs in `.python-version` or `requires-python` in `pyproject.toml`. Repos with a `uv.lock` install fastest with [uv](https://docs.astral.sh/uv/); `pyenv` and `mise` read the same pin files.
 - **Node** resolved automatically on `cd`. FLP commonly uses [fnm](https://github.com/Schniz/fnm) (`eval "$(fnm env --use-on-cd)"` in your shell config); `nvm` and `mise` work the same way against `.node-version` or `.nvmrc`.
-- **Docker** running locally. Several projects — CourtListener especially — run their services in containers.
+- **Docker** running locally. Several projects — CourtListener especially — run their services in containers. Docker Desktop covers macOS and Windows; on Linux, start the daemon as a service and add yourself to the `docker` group so you can run it without `sudo`.
+
+These checks confirm the tools work — you're not matching any specific repo's version yet, since you clone in step 6.
 
 **Done when:**
 
-- `python --version` reports the version your repo pins
-- your Node manager switches versions when you `cd` into a directory with a `.node-version` or `.nvmrc` file
+- `python --version` answers from your shell (some systems reserve bare `python`, so `python3 --version` counts too — a version manager typically gives you both)
+- your Node manager switches versions on `cd` — make a scratch directory, drop a `.node-version` in it holding a version you don't currently have, and `cd` in
 - `docker run hello-world` prints its success message
 
-You'll confirm the Python and Node versions against your actual repo in step 6. Right now the point is having the tools installed and wired into your shell.
+Step 6 is where you confirm these versions against the repo you actually work in. Right now the point is having the tools installed and wired into your shell.
 
 ## 4. Wire up your editor
 
@@ -135,5 +139,6 @@ You're up and running. From here:
 - Read [Culture](culture.md) — how we communicate, how decisions get made, urgency tiers, and flexing your day. It's day-two reading, and worth doing before your first week is out.
 - Skim your repo's `CLAUDE.md` and `CONTRIBUTING.md` if it has them. That's where team-specific conventions live.
 - Check the [HR section of the wiki](https://wiki.free.law/c/hr) for policies, benefits, and time off.
+- Take the [Foundations of Legal Research](https://elearning.aallnet.org/products/foundations-of-legal-research) course — ask your manager or onboarding buddy about access. Good to knock out sometime in your first week. Take time to actually sit with the material rather than speed-running it — it'll shape how you think about the data our tools work with.
 
 Anything on this page that didn't hold up for you is a bug in this page. Open an issue or a PR.

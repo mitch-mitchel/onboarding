@@ -59,6 +59,27 @@ Beyond that, structure your day however works for you. Early bird, night owl, mi
 - **Summarize outcomes.** Decisions from calls go into the relevant issue or PR so nobody has to have been there to stay informed.
 - **Record when practical** so teammates in different schedules can catch up.
 
+## Code Review Culture
+
+<!-- DRAFT skeleton — needs review before this is real. -->
+
+<!-- TODO: turnaround expectations — same no-SLA async norm as everything else, or something firmer? -->
+
+**Giving feedback:**
+
+<!-- TODO:
+- Blocking vs. non-blocking comments — do we mark which is which (e.g. a "nit:" prefix)?
+- Any house convention for phrasing so feedback reads as collaborative, not personal?
+-->
+
+**Receiving feedback:**
+
+<!-- TODO: pushback is normal and welcome — how do disagreements get resolved if reviewer and author don't converge? Third reviewer? Manager? -->
+
+**Who reviews?**
+
+<!-- TODO: day-one.md already flags that requested-vs-assigned reviewers varies by team — does this doc need an org-wide default, or just point there? -->
+
 ## Work, Right, Fast
 
 Our development philosophy follows three stages, in order:
@@ -89,3 +110,21 @@ When in doubt, bias toward action. It's easier to iterate on something that exis
 No question is too basic. We all started somewhere, and asking early often saves everyone time.
 
 **Timebox before asking for help.** If you're stuck, give it 30–60 minutes, then reach out to a teammate or set up a pairing session. A 5-minute conversation can often unblock hours of solo debugging — and that's a win for the whole team.
+
+## When Things Get Difficult
+
+<!-- DRAFT skeleton — needs review before this is real. -->
+
+Our [Code of Conduct](CODE_OF_CONDUCT.md) applies to teammates and community contributors alike.
+
+<!-- TODO: if a GitHub thread or Slack conversation turns unproductive —
+- Move to a call instead of continuing in text?
+- Give it a cooling-off period?
+- Loop in a manager at what point?
+-->
+
+**Reporting a concern:** <!-- TODO: who do you go to, and how? -->
+
+## Data Handling
+
+See [Data Handling](data-handling.md) for where the "open source by default" line sits relative to the data our tools work with — code and discussion are public, but not everything that touches real records is.
